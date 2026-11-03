@@ -6,7 +6,9 @@
 
     <title>AstroMaze | Home</title>
 
-    <link rel="stylesheet" href="/AstroMaze/css/style.css">
+    <link rel="stylesheet" href="/AstroMaze/css/navbar.css">
+    <link rel="stylesheet" href="/AstroMaze/css/home.css">
+    <link rel="stylesheet" href="/AstroMaze/css/footer.css">
 
 </head>
 

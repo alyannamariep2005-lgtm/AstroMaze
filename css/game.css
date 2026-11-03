@@ -1,0 +1,19 @@
+.game-section {
+  width: 100%;
+  min-height: 867px;
+
+  background-image:
+    linear-gradient(rgba(42, 18, 63, 0.6), rgba(42, 18, 63, 0.6)),
+    url("../assets/images/game-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  position: relative;
+}

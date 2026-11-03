@@ -1,0 +1,39 @@
+/* Footer */
+
+.footer-section {
+  width: 100%;
+  background-color: #050b1a;
+  padding: 45px 80px 25px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer-brand {
+  max-width: 550px;
+}
+
+.footer-brand h2 {
+  margin: 0;
+}
+
+.footer-brand p {
+  margin: 0;
+}
+
+.footer-bottom {
+  text-align: left;
+}
+
+.footer-bottom p {
+  margin: 0;
+  line-height: 1.4;
+}
