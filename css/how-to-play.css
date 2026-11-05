@@ -1,0 +1,128 @@
+.how-to-play-page {
+  width: 100%;
+  background-image:
+    linear-gradient(rgba(5, 3, 15, 0.65), rgba(5, 3, 15, 0.65)),
+    url("../assets/images/htp-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.htp-hero {
+  width: 100%;
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 80px 10%;
+}
+
+.htp-hero h1 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.htp-hero p {
+  font-size: 20px;
+  color: #ffffff;
+  max-width: 750px;
+  line-height: 1.6;
+}
+
+.htp-step {
+  width: 100%;
+  min-height: 550px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 60px;
+
+  padding: 70px 10%;
+}
+
+.htp-step.reverse {
+  flex-direction: row-reverse;
+}
+
+.step-image {
+  width: 45%;
+  height: 350px;
+
+  background-color: #1d1d3b;
+  border: 1px solid #9c86b9;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content {
+  width: 45%;
+}
+
+.step-content h2 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.step-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.htp-cta {
+  min-height: 350px;
+  background-color: #1d1d3b;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 60px 10%;
+}
+
+.htp-cta h2 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.htp-cta p {
+  color: #d0c5dc;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.play-button {
+  display: inline-block;
+  padding: 14px 35px;
+
+  background-color: #9c86b9;
+  color: #ffffff;
+
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+
+  transition: 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #ffffff;
+  color: #806a9f;
+}

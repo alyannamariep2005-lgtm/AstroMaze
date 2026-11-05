@@ -1,3 +1,11 @@
+<?php
+
+require_once '../includes/auth.php';
+
+require_role('user');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +54,7 @@
             <a href="about.php" class="hero-btn secondary-btn">Explore Galaxy</a>
 
         </div>
+        
     </div>
 
 
@@ -135,7 +144,7 @@
         <div class="features-cards">
 
             <div class="feature-card">
-                <h2>Maze Exploreation </h2>
+                <h2>Maze Exploration </h2>
                 <p>
                     Navigate through mysterious maze pathways, discover hidden routes, 
                     and find your way through each challenging level.
@@ -143,7 +152,7 @@
             </div>
 
             <div class="feature-card">
-                <h2>Energy Collecton </h2>
+                <h2>Energy Collection </h2>
                 <p>
                     Collect glowing energy orbs to earn points and 
                     gather fuel supplies to keep your spaceship running throughout the adventure.

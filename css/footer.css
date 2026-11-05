@@ -7,6 +7,7 @@
   color: #ffffff;
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
+  border-top: 1px solid #ffffff;
 }
 
 .footer-content {

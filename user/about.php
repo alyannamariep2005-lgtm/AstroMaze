@@ -8,24 +8,75 @@
 
     <link rel="stylesheet" href="/AstroMaze/css/navbar.css">
     <link rel="stylesheet" href="/AstroMaze/css/about.css">
+    <link rel="stylesheet" href="/AstroMaze/css/footer.css">
 
 </head>
 
 <body>
     <?php include '../includes/navbar.php'; ?>
 
-    <section class="about-section">
+    <section class="our-story-section">
 
-    <div class="about-content">
+    <div class="our-story-content">
 
-        <div class="about-intro">
+            <h1> WHERE OUR UNIVERSE BEGINS</h1>
+
+            <p>Every great adventure begins with a spark of imagination. 
+                Inspired by classic arcade games, AstroMaze was created to bring the thrill of maze exploration into a universe of cosmic challenges, 
+                mysterious pathways, and endless possibilities. What started as a simple idea became an adventure waiting to be explored.</p>
+
+    </div>
+
+    </section>
+
+        <section class="our-mission-section">
+
+        <div class="our-mission-content">
+
+            <h1>A UNIVERSE OF ENDLESS POSSIBILITIES</h1>
+
+            <div class="vision-mission-container">
+
+                <div class="mission-card">
+                    <h3>VISION</h3>
+                    <p>
+                        To create an exciting and memorable gaming
+                        experience where players can explore the
+                        unknown, embrace challenges, and discover
+                        endless possibilities through interactive
+                        maze adventures.
+                    </p>
+                </div>
+
+                <div class="mission-card">
+                    <h3>MISSION</h3>
+                    <p>
+                        To develop an engaging and accessible maze
+                        game that encourages strategic thinking,
+                        exploration, and problem-solving while
+                        delivering an enjoyable gaming experience
+                        for every player.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="team-section">
+
+    <div class="team-content">
+
+        <div class="team-intro">
             <h1>MEET THE GALACTIC CREW</h1>
 
             <p>Four minds, one mission, and an entire universe of possibilities. Meet the people who worked together to turn an out-of-this-world idea into an exciting gaming experience.</p>
 
         </div>
     
-         
         <div class="team-cards">
 
          <div class="team-card">
@@ -69,6 +120,8 @@
        
 
     </section>
+
+   <?php include '../includes/footer.php'; ?>
 
     
 </body>
