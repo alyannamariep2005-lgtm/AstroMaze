@@ -1,0 +1,205 @@
+/* =================================
+   ASTROMAZE - ADMIN DASHBOARD
+================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #08040f;
+  color: #ffffff;
+}
+
+/* MAIN LAYOUT */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.admin-sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background-color: #12071b;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.admin-logo {
+  padding: 24px 50px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo-astro {
+  color: #ffffff;
+}
+
+.logo-maze {
+  color: #9c86b9;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 30px 16px;
+}
+
+.sidebar-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 14px;
+  border-radius: 5px;
+}
+
+.sidebar-links a.active {
+  font-weight: 700;
+}
+
+.sidebar-links a:hover {
+  background-color: rgba(156, 134, 185, 0.15);
+}
+
+.sidebar-logout {
+  margin-top: auto;
+  padding: 20px 30px;
+}
+
+.sidebar-logout a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* MAIN CONTENT */
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  background-color: #1b0b27;
+}
+
+/* HEADER */
+
+.admin-header {
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.admin-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* DASHBOARD CONTENT */
+
+.dashboard-content {
+  padding: 28px;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.welcome-section p {
+  font-size: 13px;
+  color: #d8cadd;
+  margin-bottom: 0;
+}
+
+/* STATISTICS CARDS */
+
+.stat-card {
+  background-color: #ffffff;
+  color: #1b0b27;
+  border-radius: 0;
+  padding: 16px;
+  min-height: 90px;
+}
+
+.stat-card h3 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.stat-card p {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* RECENT ACTIVITY */
+
+.activity-section {
+  background-color: #ffffff;
+  color: #08040f;
+  min-height: 240px;
+  padding: 16px;
+  margin-top: 36px;
+}
+
+.activity-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* RECENT ACTIVITY TABLE */
+
+.activity-section table {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.activity-section thead th {
+  color: #806a9f;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 14px 10px;
+  border-bottom: 1px solid #e5e0eb;
+}
+
+.activity-section tbody td {
+  color: #241a30;
+  padding: 14px 10px;
+  border-bottom: 1px solid #eeeaf2;
+}
+
+/* STATUS BADGES */
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.status-won {
+  background-color: #d9f2e2;
+  color: #187a3d;
+}
+
+.status-lost {
+  background-color: #f8dcdc;
+  color: #b52b2b;
+}

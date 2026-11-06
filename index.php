@@ -8,12 +8,10 @@ require_once 'includes/db.php';
 // If already logged in, redirect to the correct dashboard
 if (isset($_SESSION['user_id'])) {
 
-    if ($_SESSION['role'] === 'admin') {
-        header("Location: admin/index.php");
-        exit;
+        if ($user['role'] === 'admin') {
+        header("Location: admin/dashboard.php");
     } else {
         header("Location: user/home.php");
-        exit;
     }
 }
 
@@ -58,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redirect based on account role
             if ($user['role'] === 'admin') {
 
-                header("Location: admin/index.php");
+                header("Location: admin/dashboard.php");
                 exit;
 
             } else {

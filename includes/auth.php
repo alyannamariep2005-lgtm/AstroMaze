@@ -25,12 +25,11 @@ function require_role($role) {
 
     if ($_SESSION['role'] !== $role) {
 
-        if ($_SESSION['role'] === 'admin') {
-            header("Location: /AstroMaze/admin/index.php");
-        } else {
-            header("Location: /AstroMaze/user/home.php");
-        }
-
+    if ($_SESSION['role'] === 'admin') {
+        header("Location: /AstroMaze/admin/dashboard.php");
+    } else {
+        header("Location: /AstroMaze/user/home.php");
+    }
         exit;
     }
 

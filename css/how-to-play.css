@@ -108,7 +108,7 @@
   margin-bottom: 30px;
 }
 
-.play-button {
+.htp-cta .play-button {
   display: inline-block;
   padding: 14px 35px;
 
@@ -122,7 +122,7 @@
   transition: 0.3s ease;
 }
 
-.play-button:hover {
+.htp-cta .play-button:hover {
   background-color: #ffffff;
   color: #806a9f;
 }

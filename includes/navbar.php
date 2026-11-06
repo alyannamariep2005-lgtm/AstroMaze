@@ -33,6 +33,8 @@
             Leaderboard
         </a>
 
+        <a href="/AstroMaze/logout.php" class="logout-btn">Logout</a>
+
     </div>
 
     <!-- Navbar Button -->
