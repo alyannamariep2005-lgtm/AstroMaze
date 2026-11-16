@@ -30,7 +30,7 @@
 
         <section class="htp-step">
             <div class="step-image">
-                <!-- Add your Step 1 Canva illustration here -->
+                <img src="../assets/images/step1.png" alt="Step 1">
             </div>
 
             <div class="step-content">
@@ -45,7 +45,7 @@
 
         <section class="htp-step reverse">
             <div class="step-image">
-                <!-- Add your Step 2 Canva illustration here -->
+                <img src="../assets/images/step2.png" alt="Step 2">
             </div>
 
             <div class="step-content">
@@ -60,7 +60,7 @@
 
         <section class="htp-step">
             <div class="step-image">
-                <!-- Add your Step 3 Canva illustration here -->
+                <img src="../assets/images/step3.png" alt="Step 3">
             </div>
 
             <div class="step-content">

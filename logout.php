@@ -1,15 +1,15 @@
-<?php
+    <?php
 
-session_start();
+    session_start();
 
-// Clear all session variables
-$_SESSION = [];
+    // Clear all session variables
+    $_SESSION = [];
 
-// Destroy the session
-session_destroy();
+    // Destroy the session
+    session_destroy();
 
-// Redirect to login page
-header("Location: /AstroMaze/index.php");
-exit;
+    // Redirect to login page
+    header("Location: /AstroMaze/index.php");
+    exit;
 
-?>
+    ?>

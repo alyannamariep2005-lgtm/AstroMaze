@@ -7,7 +7,7 @@ body {
 
 /* LEADERBOARD TITLE */
 .leaderboard-title {
-  font-family: "Special Gothic Expanded", sans-serif;
+  font-family: "Special Gothic Expanded One", sans-serif;
   font-size: 42px;
   color: #ffffff;
   letter-spacing: 2px;
@@ -52,14 +52,6 @@ body {
 .leaderboard-table tbody tr:hover td {
   background: rgba(156, 107, 255, 0.12);
   color: #ffffff;
-}
-
-/* KEEP NAVBAR PLAY BUTTON CONSISTENT */
-.navbar .navbar-action .play-button {
-  padding: 10px 24px;
-  font-size: 24px;
-  line-height: normal;
-  box-sizing: border-box;
 }
 
 /* TOP 3 RANK BADGES */
@@ -118,4 +110,11 @@ body {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.leaderboard-container {
+  width: 88%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 50px 0;
 }

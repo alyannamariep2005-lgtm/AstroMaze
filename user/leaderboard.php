@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $query);
 
     <?php include '../includes/navbar.php'; ?>
 
-    <main class="container py-5">
+    <main class="leaderboard-container">
 
         <div class="text-center mb-5">
             <h1 class="leaderboard-title">LEADERBOARD</h1>

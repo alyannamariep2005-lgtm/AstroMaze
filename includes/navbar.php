@@ -33,15 +33,17 @@
             Leaderboard
         </a>
 
-        <a href="/AstroMaze/logout.php" class="logout-btn">Logout</a>
 
     </div>
 
-    <!-- Navbar Button -->
     <div class="navbar-action">
 
-        <a href="game.php" class="play-button">Play Now</a>
+        <a href="/AstroMaze/logout.php" class="logout-link">Logout</a>
 
     </div>
 
 </nav>
+
+<a href="game.php" class="floating-play-btn">
+    Play Now
+</a>
