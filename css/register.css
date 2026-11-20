@@ -1,0 +1,46 @@
+/* ========================================
+   REGISTER CARD
+======================================== */
+
+.register-card {
+  width: 450px;
+  padding-top: 35px;
+  padding-bottom: 30px;
+}
+
+/* ========================================
+   REGISTER HEADING
+======================================== */
+
+.register-card h1 {
+  margin-bottom: 25px;
+  font-size: 23px;
+}
+
+/* ========================================
+   REGISTER INPUT SPACING
+======================================== */
+
+.register-card {
+  margin: 0 auto;
+}
+
+/* ========================================
+   PASSWORD ERROR MESSAGE
+======================================== */
+
+.form-error {
+  color: #ff7777;
+  font-size: 13px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+/* SUCCESS MESSAGE */
+
+.form-success {
+  color: #8fe3a5;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 15px;
+}
