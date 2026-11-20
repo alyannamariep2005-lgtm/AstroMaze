@@ -1,0 +1,123 @@
+body {
+  background-image:
+    linear-gradient(rgba(5, 3, 15, 0.65), rgba(5, 3, 15, 0.65)),
+    url("../assets/images/leaderboard-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* LEADERBOARD TITLE */
+.leaderboard-title {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-size: 42px;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+/* LEADERBOARD DESCRIPTION */
+.leaderboard-description {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* TABLE CONTAINER */
+.leaderboard-table {
+  background: rgba(29, 21, 48, 0.85);
+  border: 1px solid #6f52a2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* TABLE */
+.leaderboard-table table {
+  margin-bottom: 0;
+}
+
+/* TABLE HEADER */
+.leaderboard-table thead th {
+  background: #1d1530;
+  color: #bda4dc;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+/* TABLE BODY */
+.leaderboard-table tbody td {
+  background: transparent;
+  color: #ffffff;
+  padding: 18px;
+  border-color: rgba(156, 134, 185, 0.2);
+}
+
+/* HOVER EFFECT */
+.leaderboard-table tbody tr:hover td {
+  background: rgba(156, 107, 255, 0.12);
+  color: #ffffff;
+}
+
+/* TOP 3 RANK BADGES */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  color: #08040f;
+}
+
+/* GOLD - 1ST PLACE */
+.rank-gold {
+  background-color: #d6ad58;
+  box-shadow: 0 0 12px rgba(214, 173, 88, 0.4);
+}
+
+/* SILVER - 2ND PLACE */
+.rank-silver {
+  background-color: #c0c0c0;
+  box-shadow: 0 0 12px rgba(192, 192, 192, 0.3);
+}
+
+/* BRONZE - 3RD PLACE */
+.rank-bronze {
+  background-color: #cd7f52;
+  box-shadow: 0 0 12px rgba(205, 127, 82, 0.3);
+}
+
+/* CURRENT PLAYER HIGHLIGHT */
+.leaderboard-table tbody tr.current-player td {
+  background-color: rgba(156, 107, 255, 0.2);
+  border-top: 1px solid #9c6bff;
+  border-bottom: 1px solid #9c6bff;
+}
+
+/* CURRENT PLAYER HOVER */
+.leaderboard-table tbody tr.current-player:hover td {
+  background-color: rgba(156, 107, 255, 0.3);
+}
+
+/* CURRENT PLAYER BADGE */
+.you-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 4px 10px;
+  background-color: #9c86b9;
+  color: #08040f;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.leaderboard-container {
+  width: 88%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
