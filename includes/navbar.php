@@ -1,5 +1,34 @@
+
 <?php
-    $currentPage = basename($_SERVER['PHP_SELF']);
+
+$currentPage = basename($_SERVER['PHP_SELF']);
+
+// Get the logged-in user's profile picture
+require_once __DIR__ . '/db.php';
+
+$userId = $_SESSION['user_id'] ?? null;
+$profilePicture = null;
+
+if ($userId) {
+
+    $pictureQuery = mysqli_prepare(
+        $conn,
+        "SELECT profile_picture FROM users WHERE user_id = ?"
+    );
+
+    mysqli_stmt_bind_param($pictureQuery, "i", $userId);
+    mysqli_stmt_execute($pictureQuery);
+
+    $pictureResult = mysqli_stmt_get_result($pictureQuery);
+    $pictureData = mysqli_fetch_assoc($pictureResult);
+
+    if ($pictureData) {
+        $profilePicture = $pictureData['profile_picture'];
+    }
+
+    mysqli_stmt_close($pictureQuery);
+}
+
 ?>
 
 <nav class="navbar">
@@ -33,12 +62,46 @@
             Leaderboard
         </a>
 
-
     </div>
 
     <div class="navbar-action">
 
-        <a href="/AstroMaze/logout.php" class="logout-link">Logout</a>
+        <details class="profile-dropdown">
+
+            <summary class="profile-trigger">
+
+                <?php if (!empty($profilePicture)): ?>
+
+                    <img
+                        src="/AstroMaze/<?php echo htmlspecialchars($profilePicture); ?>"
+                        alt="Profile Picture"
+                        class="navbar-profile-picture"
+                    >
+
+                <?php else: ?>
+
+                    <span class="navbar-profile-placeholder">
+                        <?php echo strtoupper(substr($_SESSION['username'] ?? 'U', 0, 1)); ?>
+                    </span>
+
+                <?php endif; ?>
+
+                Profile
+                <span class="dropdown-arrow">▼</span>
+
+            </summary>
+
+            <div class="profile-menu">
+
+                <a href="edit-profile.php">Edit Profile</a>
+
+                <a href="/AstroMaze/logout.php" class="logout-link">
+                    Logout
+                </a>
+
+            </div>
+
+        </details>
 
     </div>
 

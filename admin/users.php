@@ -1,8 +1,61 @@
+
 <?php
+
 require_once '../includes/auth.php';
 require_once '../includes/db.php';
 
 require_role('admin');
+
+// HANDLE DISABLE / ENABLE USER ACTIONS
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $userId = intval($_POST['user_id'] ?? 0);
+    $action = $_POST['action'] ?? '';
+
+    // Only allow disable or enable actions
+    if ($userId > 0 && in_array($action, ['disable', 'enable'])) {
+
+        // Only regular user accounts can be disabled or enabled
+        $updateQuery = mysqli_prepare(
+            $conn,
+            "UPDATE users
+             SET is_active = ?
+             WHERE user_id = ? AND role = 'user'"
+        );
+
+        $status = ($action === 'enable') ? 1 : 0;
+
+        mysqli_stmt_bind_param(
+            $updateQuery,
+            "ii",
+            $status,
+            $userId
+        );
+
+        if (mysqli_stmt_execute($updateQuery)) {
+
+            if (mysqli_stmt_affected_rows($updateQuery) > 0) {
+
+                mysqli_stmt_close($updateQuery);
+
+                if ($action === 'disable') {
+                    header("Location: users.php?disabled=1");
+                } else {
+                    header("Location: users.php?enabled=1");
+                }
+
+                exit;
+
+            }
+
+        }
+
+        mysqli_stmt_close($updateQuery);
+
+        header("Location: users.php?error=action_failed");
+        exit;
+    }
+}
 
 // SEARCH USERS
 $search = $_GET['search'] ?? '';
@@ -13,7 +66,8 @@ $userQuery = "
         username,
         email,
         role,
-        created_at
+        created_at,
+        is_active
     FROM users
     WHERE username LIKE ? OR email LIKE ?
     ORDER BY created_at DESC
@@ -27,11 +81,12 @@ mysqli_stmt_bind_param($stmt, "ss", $searchTerm, $searchTerm);
 mysqli_stmt_execute($stmt);
 
 $userResult = mysqli_stmt_get_result($stmt);
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,6 +134,7 @@ $userResult = mysqli_stmt_get_result($stmt);
         <div class="dashboard-content">
 
             <section class="welcome-section">
+
                 <h2>Registered Users</h2>
                 <p>Manage and view all registered AstroMaze players.</p>
 
@@ -89,24 +145,24 @@ $userResult = mysqli_stmt_get_result($stmt);
                     </div>
                 <?php } ?>
 
-                <!-- SUCCESS: DELETED -->
-                <?php if (isset($_GET['deleted'])) { ?>
+                <!-- SUCCESS: DISABLED -->
+                <?php if (isset($_GET['disabled'])) { ?>
                     <div class="alert alert-success mt-3">
-                        User account deleted successfully!
+                        User account disabled successfully!
                     </div>
                 <?php } ?>
 
-                <!-- ERROR: SELF DELETE -->
-                <?php if (isset($_GET['error']) && $_GET['error'] === 'self_delete') { ?>
-                    <div class="alert alert-danger mt-3">
-                        You cannot delete your own administrator account!
+                <!-- SUCCESS: ENABLED -->
+                <?php if (isset($_GET['enabled'])) { ?>
+                    <div class="alert alert-success mt-3">
+                        User account enabled successfully!
                     </div>
                 <?php } ?>
 
-                <!-- ERROR: DELETE FAILED -->
-                <?php if (isset($_GET['error']) && $_GET['error'] === 'delete_failed') { ?>
+                <!-- ERROR: ACTION FAILED -->
+                <?php if (isset($_GET['error']) && $_GET['error'] === 'action_failed') { ?>
                     <div class="alert alert-danger mt-3">
-                        Unable to delete this user account.
+                        Unable to update this user account. Please try again.
                     </div>
                 <?php } ?>
 
@@ -153,6 +209,7 @@ $userResult = mysqli_stmt_get_result($stmt);
                                 <th>USERNAME</th>
                                 <th>EMAIL</th>
                                 <th>ROLE</th>
+                                <th>STATUS</th>
                                 <th>DATE REGISTERED</th>
                                 <th>ACTIONS</th>
                             </tr>
@@ -163,6 +220,7 @@ $userResult = mysqli_stmt_get_result($stmt);
                             <?php while ($user = mysqli_fetch_assoc($userResult)) { ?>
 
                                 <tr>
+
                                     <td>
                                         <?php echo $user['user_id']; ?>
                                     </td>
@@ -179,11 +237,31 @@ $userResult = mysqli_stmt_get_result($stmt);
                                         <?php echo htmlspecialchars($user['role']); ?>
                                     </td>
 
+                                    <!-- ACCOUNT STATUS -->
+                                    <td>
+
+                                        <?php if ($user['is_active'] == 1) { ?>
+
+                                            <span class="badge bg-success">
+                                                Active
+                                            </span>
+
+                                        <?php } else { ?>
+
+                                            <span class="badge bg-secondary">
+                                                Disabled
+                                            </span>
+
+                                        <?php } ?>
+
+                                    </td>
+
                                     <td>
                                         <?php echo date("M d, Y", strtotime($user['created_at'])); ?>
                                     </td>
 
                                     <td>
+
                                         <div class="d-flex gap-2">
 
                                             <!-- EDIT BUTTON -->
@@ -194,13 +272,13 @@ $userResult = mysqli_stmt_get_result($stmt);
                                                 Edit
                                             </a>
 
-                                            <!-- DELETE BUTTON -->
+                                            <!-- DISABLE / ENABLE BUTTON -->
                                             <?php if ($user['role'] === 'user') { ?>
 
                                                 <form
                                                     method="POST"
-                                                    action="delete_user.php"
-                                                    onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.');"
+                                                    action="users.php"
+                                                    onsubmit="return confirm('<?php echo ($user['is_active'] == 1) ? 'Are you sure you want to disable this user account?' : 'Are you sure you want to enable this user account?'; ?>');"
                                                 >
 
                                                     <input
@@ -209,16 +287,46 @@ $userResult = mysqli_stmt_get_result($stmt);
                                                         value="<?php echo $user['user_id']; ?>"
                                                     >
 
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                        Delete
-                                                    </button>
+                                                    <?php if ($user['is_active'] == 1) { ?>
+
+                                                        <input
+                                                            type="hidden"
+                                                            name="action"
+                                                            value="disable"
+                                                        >
+
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-sm btn-outline-danger"
+                                                        >
+                                                            Disable
+                                                        </button>
+
+                                                    <?php } else { ?>
+
+                                                        <input
+                                                            type="hidden"
+                                                            name="action"
+                                                            value="enable"
+                                                        >
+
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-sm btn-outline-success"
+                                                        >
+                                                            Enable
+                                                        </button>
+
+                                                    <?php } ?>
 
                                                 </form>
 
                                             <?php } ?>
 
                                         </div>
+
                                     </td>
+
                                 </tr>
 
                             <?php } ?>
@@ -226,7 +334,7 @@ $userResult = mysqli_stmt_get_result($stmt);
                             <?php if (mysqli_num_rows($userResult) === 0) { ?>
 
                                 <tr>
-                                    <td colspan="6" class="text-center">
+                                    <td colspan="7" class="text-center">
                                         No registered users found.
                                     </td>
                                 </tr>

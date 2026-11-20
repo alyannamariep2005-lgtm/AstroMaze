@@ -1,3 +1,8 @@
+<?php
+require_once '../includes/auth.php';
+require_role('user');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

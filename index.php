@@ -8,10 +8,16 @@ require_once 'includes/db.php';
 // If already logged in, redirect to the correct dashboard
 if (isset($_SESSION['user_id'])) {
 
-        if ($user['role'] === 'admin') {
+    if (($_SESSION['role'] ?? '') === 'admin') {
+
         header("Location: admin/dashboard.php");
-    } else {
+        exit;
+
+    } elseif (($_SESSION['role'] ?? '') === 'user') {
+
         header("Location: user/home.php");
+        exit;
+
     }
 }
 
@@ -32,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Find the account in the database
         $query = mysqli_prepare(
             $conn,
-            "SELECT user_id, username, password, role
+            "SELECT user_id, username, password, role, is_active
              FROM users
              WHERE username = ?"
         );
@@ -43,7 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = mysqli_stmt_get_result($query);
         $user = mysqli_fetch_assoc($result);
 
-        if ($user && password_verify($password, $user['password'])) {
+        // Verify password and check if account is active
+        if (
+            $user &&
+            password_verify($password, $user['password']) &&
+            $user['is_active'] == 1
+        ) {
 
             // Regenerate session ID for security
             session_regenerate_id(true);
@@ -78,10 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,8 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <main class="login-container">
 
         <!-- Rocket Illustration -->
-        <img 
-            src="assets/images/login-rocket.png" 
+        <img
+            src="assets/images/login-rocket.png"
             alt="AstroMaze Rocket"
             class="login-rocket"
         >
@@ -117,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <?php if (!empty($error)): ?>
                 <p class="form-error">
-            <?php echo htmlspecialchars($error); ?>
+                    <?php echo htmlspecialchars($error); ?>
                 </p>
             <?php endif; ?>
 
@@ -126,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input 
+                    <input
                         type="text"
                         id="username"
                         name="username"
@@ -138,14 +148,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <!-- Password -->
                 <div class="form-group">
                     <label for="password">Password</label>
+
                     <div class="password-wrapper">
-                        <input 
+                        <input
                             type="password"
                             id="password"
                             name="password"
                             placeholder="Enter your password"
                             required
                         >
+
                         <button type="button" id="togglePassword">
                             <i>Show</i>
                         </button>
@@ -179,8 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     </main>
 
-
     <script src="js/main.js"></script>
-    
+
 </body>
 </html>

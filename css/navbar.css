@@ -187,4 +187,125 @@ body {
 html {
   overflow-y: scroll;
 }
-  
+
+/* PROFILE DROPDOWN */
+
+.navbar-action {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profile-dropdown {
+  position: relative;
+}
+
+/* Profile Button */
+
+.profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap;
+}
+
+/* Remove Default Browser Arrow */
+
+.profile-trigger {
+  list-style: none;
+}
+
+.profile-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.profile-trigger::marker {
+  content: "";
+}
+/* Dropdown Arrow */
+
+.dropdown-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate Arrow When Open */
+
+.profile-dropdown[open] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+
+  width: 150px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #e5e5e5;
+  padding: 12px 0;
+
+  z-index: 1001;
+}
+
+/* Dropdown Links */
+
+.profile-menu a {
+  display: block;
+
+  padding: 8px 14px;
+
+  color: #8876a5;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.profile-menu a:hover {
+  background-color: #d5d5d5;
+  color: #6e578e;
+}
+
+/* Logout Link */
+
+.profile-menu .logout-link {
+  color: #8876a5;
+  font-size: 14px;
+}
+
+/* NAVBAR PROFILE PICTURE */
+
+.navbar-profile-picture,
+.navbar-profile-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #9c86b9;
+  flex-shrink: 0;
+}
+
+.navbar-profile-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #35254f;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
