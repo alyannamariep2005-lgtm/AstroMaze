@@ -9,7 +9,7 @@
  * DATABASE_URL is set (see includes/db.php).
  */
 
-if (function_exists('mysqli_prepare')) {
+if (extension_loaded('mysqli')) {
     die('pg_compat.php cannot be used while the mysqli extension is loaded.');
 }
 
