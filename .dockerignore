@@ -1,0 +1,6 @@
+.git
+.gitattributes
+astromaze_db.sql
+supabase
+uploads/profile_pictures/*
+node_modules

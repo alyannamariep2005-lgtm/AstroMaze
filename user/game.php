@@ -4,9 +4,6 @@ require_once '../includes/auth.php';
 require_once '../includes/db.php';
 
 require_login();
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +20,6 @@ require_login();
 <a href="home.php" class="back-btn">
     < Back to Home
 </a>
-
     
 <main class="game-container">
 
